@@ -1,0 +1,13 @@
+---
+# This playbook deploys the whole Heating Control 3 application
+
+- name: Install all componentes of HeatingControl 3
+  hosts: all
+  remote_user: pi
+
+  roles:
+    - kernelConfig
+    - remoteShutdown
+    - greeting
+    - docker
+    - heatingControl
