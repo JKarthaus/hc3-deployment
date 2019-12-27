@@ -1,0 +1,11 @@
+
+---
+# This playbook gives the user pi the rigths to shutdown the system
+
+- lineinfile:
+    dest: /etc/sudoers
+    regexp: '^pi'
+    line: 'pi ALL=(ALL) NOPASSWD: /sbin/poweroff'
+  become: yes
+
+

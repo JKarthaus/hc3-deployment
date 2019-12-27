@@ -1,0 +1,71 @@
+version: '2'
+services:
+   hc-aqmp:
+      image: ronnyroos/rpi-rabbitmq
+      container_name: hc-aqmp
+      restart: always
+      hostname: aqmp
+      ports:
+      - 5672:5672
+      - 15672:15672
+
+   hc-ds18b20:
+      image: jkarthaus/hc-ds18b20_pusher:latest
+      container_name: hc-ds18b20
+      restart: always
+      hostname: hc-ds18b20
+      environment:
+         - RABBIT_MQ_HOST=hc-aqmp
+         - RABBIT_MQ_EXCHANGE=hc-ds18b20
+      privileged: true
+      depends_on:
+         - hc-aqmp
+
+   hc-gpio-actor:
+      image: jkarthaus/hc-gpio_actor:latest
+      container_name: hc-gpio-actor
+      restart: always
+      hostname: hc-gpio-actor
+      environment:
+         - RABBIT_MQ_HOST=hc-aqmp
+         - RABBIT_MQ_QUEUE=hc-gpio-actor
+         - DEMO_MODE=False
+      privileged: true
+      depends_on:
+         - hc-aqmp                  
+
+   hc-lcd-display:
+      image: jkarthaus/hc-lcd_display:latest
+      container_name: hc-lcd-display
+      restart: always
+      hostname: hc-lcd-display
+      environment:
+         - RABBIT_MQ_HOST=hc-aqmp
+         - RABBIT_MQ_QUEUE=hc-lcd-display
+         - DEMO_MODE=False
+         - WELCOME_TEXT=Heating Control III...
+      devices:
+         - "/dev/i2c-1:/dev/i2c-1"
+      depends_on:
+         - hc-aqmp
+
+   hc-program-selector:
+      image: jkarthaus/hc-program-selector:latest
+      container_name: hc-program-selector
+      restart: always
+      hostname: hc-program-selector
+      environment:
+         - HEATING_CONTROL_TEMPERATURE-QUEUE_NAME=hc-temperature
+         - HEATING_CONTROL_SENSOR_COMBUSTION=28-03146209ceff
+         - HEATING_CONTROL_SENSOR_GARAGE=28-0214631220ff
+         - HEATING_CONTROL_SENSOR_BUFFER=28-0214630d20ff
+         - RABBITMQ_HOST=hc-aqmp
+         - RABBITMQ_PORT=5672
+      #HEATING-CONTROL_SENSOR_LEADING-LINE=
+      #HEATING-CONTROL_SENSOR_RETURN-LINE=
+      depends_on:
+         - hc-aqmp
+      ports:
+         - 8080:8080
+
+         

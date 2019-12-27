@@ -1,0 +1,69 @@
+
+---
+
+# Raspi-Config Stuff
+- name: Enable I2c in raspi config
+  shell: "sudo raspi-config nonint do_i2c 0"
+  become: yes
+
+- name: Enable One Wire raspi config
+  shell: "sudo raspi-config nonint do_onewire 0"
+  become: yes
+
+# This playbook installs kernel tools and config
+# Enable oneWire Kernel Modules in Device Tree and modules
+- lineinfile:
+    dest: /boot/config.txt
+    regexp: '^w1-gpio pullup='
+    line: 'w1-gpio pullup=1'
+  become: yes
+
+- lineinfile:
+    dest: /boot/config.txt
+    regexp: '^w1-therm'
+    line: 'w1-therm'
+  become: yes
+
+- lineinfile:
+    dest: /boot/config.txt
+    regexp: '^dtoverlay='
+    line: 'dtoverlay=w1-gpio-pullup'
+  become: yes
+
+# Some additions ind modules File
+- lineinfile:
+    dest: /etc/modules
+    regexp: '^w1-gpio pullup='
+    line: 'w1-gpio pullup=1'
+  become: yes
+
+- lineinfile:
+    dest: /etc/modules
+    regexp: '^w1-therm'
+    line: 'w1-therm'
+  become: yes
+
+- lineinfile:
+    dest: /etc/modules
+    regexp: '^i2c-bcm2708'
+    line: 'i2c-bcm2708'
+  become: yes
+
+- lineinfile:
+    dest: /etc/modules
+    regexp: '^i2c-dev'
+    line: 'i2c-dev'
+  become: yes
+
+# install Tool Software
+- name: Install I2C Tools
+  apt:
+    name: i2c-tools
+    state: present
+  become: yes
+
+- name: Install Python Tools for I2c
+  apt:
+    name: python-smbus
+    state: present
+  become: yes
