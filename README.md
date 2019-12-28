@@ -19,12 +19,14 @@ This is the Main Ansible Playbook to :
 
 ## What is HC3
 HeatingControl3 is s set of Microservices to control a Wood burning
-Heating System with a Raspberry Pi.
-Shown at this Diagramm:
+Heating System with a Raspberry Pi.  
+Shown in this Diagramm:
 
-![](https://joern-karthaus.de/heatingControl/img/hc3-architektur.png)
+![](https://joern-karthaus.de/heatingControl/img/useCase.png)
 
-Detailed Information see my [HC3 Documentation](https://joern-karthaus.de/heatingControl/heatingContol3.html) on my Blog
+>Detailed Information see my [HC3 Documentation](https://joern-karthaus.de/heatingControl/heatingContol3.html) on my Blog  
+>...sorry only in German ;-)
+
 
 ## HC3 in Action
 
