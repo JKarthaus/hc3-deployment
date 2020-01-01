@@ -24,7 +24,7 @@ Shown in this Diagramm:
 
 ![](https://joern-karthaus.de/heatingControl/img/useCase.png)
 
->Detailed Information see my [HC3 Documentation](https://joern-karthaus.de/heatingControl/heatingContol3.html) on my Blog  
+>Detailed Information see my [HC3 Documentation](https://joern-karthaus.de/heatingControl/heatingControl3.html) on my Blog  
 >...sorry only in German ;-)
 
 
