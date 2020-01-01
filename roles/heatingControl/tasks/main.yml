@@ -47,7 +47,7 @@
   become: yes
 
 - name: First start and configure RabbitMQ
-  shell: "docker-compose -f /opt/heatingControl/docker-compose.yml up -d hc-aqmp"
+  shell: "docker-compose -f /opt/heatingControl/docker-compose.yml up -d hc3-aqmp"
   become: yes
 
 - name: Wait for Rabbit MQ come up
@@ -64,8 +64,3 @@
   shell: "docker-compose -f /opt/heatingControl/docker-compose.yml up -d"
   become: yes
 
-#- name: Configure Rabbit MQ via Curl
-#  shell: 'curl -u guest:guest \
-#          -X POST -H "content-type:application/json" \
-#          -d @/opt/heatingControl/rabbit_aqmp_config.json \
-#          http://localhost:15672/api/definitions'
