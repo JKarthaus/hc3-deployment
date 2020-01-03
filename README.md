@@ -24,10 +24,14 @@ Shown in this Diagramm:
 
 ![](https://joern-karthaus.de/heatingControl/img/useCase.png)
 
->Detailed Information see my [HC3 Documentation](https://joern-karthaus.de/heatingControl/heatingControl3.html) on my Blog  
->...sorry only in German ;-)
+>Detailed Information see my 
+>[HC3 Documentation](https://joern-karthaus.de/heatingControl/heatingControl3.html) on my Blog  
+>[More Photos](https://joern-karthaus.de/heatingControl/hc3images.html)
+>>...sorry only in German ;-)
 
 
 ## HC3 in Action
+![hc3-action1](https://joern-karthaus.de/heatingControl/img/hc3-11.jpg)
+![hc3-action2](https://joern-karthaus.de/heatingControl/img/hc3-10.jpg)
 
-**...comming soon**
+
