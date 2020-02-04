@@ -21,11 +21,11 @@ services:
       depends_on:
          - hc3-aqmp
 
-   hc-gpio-actor:
-      image: jkarthaus/hc-gpio_actor:latest
-      container_name: hc-gpio-actor
+   hc3-actor:
+      image: jkarthaus/hc3-actor:latest
+      container_name: hc3-actor
       restart: always
-      hostname: hc-gpio-actor
+      hostname: hc3-actor
       environment:
          - RABBIT_MQ_HOST=hc3-aqmp
          - RABBIT_MQ_QUEUE=hc-gpio-actor
@@ -34,7 +34,7 @@ services:
       depends_on:
          - hc3-aqmp
 
-   hc-lcd-display:
+   hc3-display:
       image: jkarthaus/hc3-display:latest
       container_name: hc3-display
       restart: always
