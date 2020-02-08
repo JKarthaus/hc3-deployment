@@ -9,11 +9,11 @@ services:
       - 5672:5672
       - 15672:15672
 
-   hc-ds18b20:
-      image: jkarthaus/hc-ds18b20_pusher:latest
-      container_name: hc-ds18b20
+   hc3-sensor:
+      image: jkarthaus/hc3-sensor:latest
+      container_name: hc3-sesnor
       restart: always
-      hostname: hc-ds18b20
+      hostname: hc3-sesnor
       environment:
          - RABBIT_MQ_HOST=hc3-aqmp
          - RABBIT_MQ_EXCHANGE=hc-ds18b20
@@ -21,11 +21,11 @@ services:
       depends_on:
          - hc3-aqmp
 
-   hc-gpio-actor:
-      image: jkarthaus/hc-gpio_actor:latest
-      container_name: hc-gpio-actor
+   hc3-actor:
+      image: jkarthaus/hc3-actor:latest
+      container_name: hc3-actor
       restart: always
-      hostname: hc-gpio-actor
+      hostname: hc3-actor
       environment:
          - RABBIT_MQ_HOST=hc3-aqmp
          - RABBIT_MQ_QUEUE=hc-gpio-actor
@@ -34,7 +34,7 @@ services:
       depends_on:
          - hc3-aqmp
 
-   hc-lcd-display:
+   hc3-display:
       image: jkarthaus/hc3-display:latest
       container_name: hc3-display
       restart: always
