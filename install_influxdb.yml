@@ -1,0 +1,10 @@
+---
+# This playbook deploys the whole Heating Control 3 application
+
+- name: Instal Influx DB in Docker Container
+  hosts: nasPi
+  remote_user: pi
+
+  roles:
+    - docker
+    #- influx

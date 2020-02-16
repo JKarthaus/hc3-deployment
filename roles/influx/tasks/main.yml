@@ -1,0 +1,12 @@
+
+---
+
+# This playbook installs influxDB as Docker Service
+# executes at ssh login
+
+- name: Copy Script to pi user
+  template:
+    src: "templates/welcome.sh"
+    dest: "~"
+    mode: u=rwx,g=rwx,o=rwx
+
