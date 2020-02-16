@@ -11,9 +11,9 @@ services:
 
    hc3-sensor:
       image: jkarthaus/hc3-sensor:latest
-      container_name: hc3-sesnor
+      container_name: hc3-sensor
       restart: always
-      hostname: hc3-sesnor
+      hostname: hc3-sensor
       environment:
          - RABBIT_MQ_HOST=hc3-aqmp
          - RABBIT_MQ_EXCHANGE=hc-ds18b20
