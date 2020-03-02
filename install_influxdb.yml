@@ -7,4 +7,4 @@
 
   roles:
     - docker
-    #- influx
+    - influx

@@ -1,12 +1,30 @@
 
 ---
 
+
 # This playbook installs influxDB as Docker Service
 # executes at ssh login
 
-- name: Copy Script to pi user
-  template:
-    src: "templates/welcome.sh"
-    dest: "~"
-    mode: u=rwx,g=rwx,o=rwx
+- name: create influxdb base dir
+  file:
+    path: /opt/influxdb
+    state: directory
+    owner: pi
+    group: root
+    mode: 0775
+  become: yes
+
+
+- name: Copy docker-compose file
+  copy:
+    src: "templates/docker-compose.yml"
+    dest: "/opt/influxdb/docker-compose.yml"
+
+- name: Pull docker images
+  shell: "docker-compose -f /opt/influxdb/docker-compose.yml pull"
+  become: yes
+
+- name: Create containers
+  shell: "docker-compose -f /opt/influxdb/docker-compose.yml up -d"
+  become: yes
 
