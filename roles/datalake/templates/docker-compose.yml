@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+   influxDB:
+      image: influxdb:1.7
+      container_name: influxDB
+      restart: always
+      hostname: influxDB
+      ports:
+         - 8086:8086
+      volumes:
+         - data-volume:/var/lib/influxdb
+
+   grafana:
+      image: grafana/grafana:latest
+      container_name: grafana
+      restart: always
+      hostname: grafana
+      ports:
+         - 3000:3000
+      volumes:
+         - grafana-storage:/var/lib/grafana
+
+volumes:
+   data-volume:
+      driver: local
+      driver_opts:
+         type: none
+         o: bind
+         device: "/srv/dev-disk-by-label-Data/san/influxDB"
+   grafana-storage:
+      driver: local
+      driver_opts:
+         type: none
+         o: bind
+         device: "/srv/dev-disk-by-label-Data/san/grafana"

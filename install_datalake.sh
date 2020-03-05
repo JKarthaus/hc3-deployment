@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "-------------------------------------------------------"
-echo "INSTALLING InfluxDB via Ansible on Raspberry Pi"
-echo "InfluxDB is a additional Service for HC3 analytics."
+echo "INSTALLING Datalake Tools                              "
+echo "influxdb + grafana via Ansible on Raspberry Pi         "
 echo "-------------------------------------------------------"
 
 
@@ -29,4 +29,4 @@ fi
 
 cowsay "Starting Ansible Playbook"
 
-ansible-playbook $1 install_influxdb.yml -i hosts
+ansible-playbook $1 install_datalake.yml -i hosts
