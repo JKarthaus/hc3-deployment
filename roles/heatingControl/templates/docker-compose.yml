@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
    hc3-aqmp:
       image: ronnyroos/rpi-rabbitmq
@@ -8,6 +8,10 @@ services:
       ports:
       - 5672:5672
       - 15672:15672
+      logging:
+         driver: "json-file"
+         options:
+            max-size: "1024m"
 
    hc3-sensor:
       image: jkarthaus/hc3-sensor:latest
@@ -20,6 +24,10 @@ services:
       privileged: true
       depends_on:
          - hc3-aqmp
+      logging:
+         driver: "json-file"
+         options:
+            max-size: "1024m"
 
    hc3-actor:
       image: jkarthaus/hc3-actor:latest
@@ -33,6 +41,10 @@ services:
       privileged: true
       depends_on:
          - hc3-aqmp
+      logging:
+         driver: "json-file"
+         options:
+            max-size: "1024m"
 
    hc3-display:
       image: jkarthaus/hc3-display:latest
@@ -48,6 +60,10 @@ services:
          - "/dev/i2c-1:/dev/i2c-1"
       depends_on:
          - hc3-aqmp
+      logging:
+         driver: "json-file"
+         options:
+            max-size: "1024m"
 
    hc3-core:
       image: jkarthaus/hc3-core:latest
@@ -68,5 +84,9 @@ services:
          - hc3-aqmp
       ports:
          - 8080:8080
+      logging:
+         driver: "json-file"
+         options:
+            max-size: "1024m"
 
          
