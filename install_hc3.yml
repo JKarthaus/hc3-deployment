@@ -6,8 +6,8 @@
   remote_user: pi
 
   roles:
-    - kernelConfig
-    - remoteShutdown
-    - greeting
-    - docker
+ #   - kernelConfig
+ #   - remoteShutdown
+ #   - greeting
+ #   - docker
     - heatingControl

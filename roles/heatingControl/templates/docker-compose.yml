@@ -73,9 +73,9 @@ services:
       environment:
          - HC3_RELAIS-EXCHANGE_NAME=hc-relais-hat
          - HC3_TEMPERATURE-QUEUE_NAME=hc-temperature
-         - HC3_SENSOR_COMBUSTION=28-03146209ceff
-         - HC3_SENSOR_GARAGE=28-0214631220ff
-         - HC3_SENSOR_BUFFER=28-0214630d20ff
+         - HC3_SENSOR_COMBUSTION=28-0214630d20ff
+         - HC3_SENSOR_GARAGE=28-03146209ceff
+         - HC3_SENSOR_BUFFER=28-0214631220ff
          - RABBITMQ_HOST=hc3-aqmp
          - RABBITMQ_PORT=5672
       #HEATING-CONTROL_SENSOR_LEADING-LINE=
