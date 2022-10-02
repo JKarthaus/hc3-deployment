@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo "-------------------------------------------------------"
-echo "INSTALLING Datalake Tools                              "
-echo "influxdb + grafana via Ansible on Raspberry Pi         "
-echo "-------------------------------------------------------"
+echo "-----------------------------------------------------------"
+echo "INSTALLING Heating Control Datalake Tools                  "
+echo "influxdb, telegraf, chronograf via Ansible on Raspberry Pi "
+echo "-----------------------------------------------------------"
 
 
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' ansible|grep "install ok installed")
@@ -29,4 +29,4 @@ fi
 
 cowsay "Starting Ansible Playbook"
 
-ansible-playbook $1 install_datalake.yml -i hosts
+ansible-playbook $1 install_hc3Datalake.yml -i hosts

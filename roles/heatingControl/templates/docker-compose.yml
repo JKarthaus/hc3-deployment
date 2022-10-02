@@ -1,5 +1,6 @@
 version: '3'
 services:
+#-----------------------------------------------------------------------------------
    hc3-aqmp:
       image: ronnyroos/rpi-rabbitmq
       container_name: hc3-aqmp
@@ -12,7 +13,7 @@ services:
          driver: "json-file"
          options:
             max-size: "1024m"
-
+#-----------------------------------------------------------------------------------
    hc3-sensor:
       image: jkarthaus/hc3-sensor:latest
       container_name: hc3-sensor
@@ -28,7 +29,7 @@ services:
          driver: "json-file"
          options:
             max-size: "1024m"
-
+#-----------------------------------------------------------------------------------
    hc3-actor:
       image: jkarthaus/hc3-actor:latest
       container_name: hc3-actor
@@ -45,7 +46,7 @@ services:
          driver: "json-file"
          options:
             max-size: "1024m"
-
+#-----------------------------------------------------------------------------------
    hc3-display:
       image: jkarthaus/hc3-display:latest
       container_name: hc3-display
@@ -64,7 +65,7 @@ services:
          driver: "json-file"
          options:
             max-size: "1024m"
-
+#-----------------------------------------------------------------------------------
    hc3-core:
       image: jkarthaus/hc3-core:latest
       container_name: hc3-core
@@ -90,4 +91,3 @@ services:
          options:
             max-size: "1024m"
 
-         

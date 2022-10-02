@@ -1,0 +1,10 @@
+---
+# This playbook deploys the whole Heating Control 3 application
+
+- name: Install hc3 Datalake tool to docker-compose
+  hosts: all
+  remote_user: pi
+
+  roles:
+  # - docker
+    - heatingControlDatalake

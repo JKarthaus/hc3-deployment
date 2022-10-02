@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+#-----------------------------------------------------------------------------------
+   hc3-influxdb:
+      image: arm32v7/influxdb:latest
+      restart: always
+      container_name: hc3-influxdb
+      hostname: hc3-influxdb
+      environment:
+         - INFLUXDB_DB=hc3
+         - INFLUXDB_HTTP_AUTH_ENABLED=true
+         - INFLUXDB_ADMIN_USER=hc3
+         - INFLUXDB_ADMIN_PASSWORD=hc3
+         - INFLUXDB_META_DIR=/var/lib/influxdb/meta2
+      ports:
+         - 8086:8086
+      logging:
+         driver: "json-file"
+         options:
+            max-size: "1024m"
+      volumes:
+         - /opt/heatingControlDatalake/influxDb/data:/var/lib/influxdb
+         - /opt/heatingControlDatalake/influxDb/init:/docker-entrypoint-initdb.d
+         - /opt/heatingControlDatalake/influxDb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+#-----------------------------------------------------------------------------------
+   hc3-telegraf:
+      image: arm32v7/telegraf:latest
+      restart: always
+      container_name: hc3-telegraf
+      volumes:
+         - /opt/heatingControlDatalake/influxDb/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+#-----------------------------------------------------------------------------------
+   hc3-chronograf:
+      image: arm32v7/chronograf:latest
+      container_name: hc3-chronograf
+      restart: always
+      ports:
+         - "8888:8888"
+      depends_on:
+         - hc3-influxdb
+      environment:
+         - INFLUXDB_URL=http://hc3-werkstatt:8086
+         - INFLUXDB_USERNAME=hc3
+         - INFLUXDB_PASSWORD=hc3

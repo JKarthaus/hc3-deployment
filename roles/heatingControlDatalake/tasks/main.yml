@@ -1,0 +1,62 @@
+
+---
+
+# This playbook installs Datalake Tools as Docker Service
+# executes at ssh login
+# https://blog.anoff.io/2020-12-run-influx-on-raspi-docker-compose/
+
+- name: create heatingControlDatalake base dir
+  file:
+    path: /opt/heatingControlDatalake
+    state: directory
+    owner: pi
+    group: root
+    mode: 0775
+  become: yes
+
+- name: create influxDB data dir
+  file:
+    path: /opt/heatingControlDatalake/influxDb/data
+    state: directory
+    owner: pi
+    group: root
+    mode: 0775
+  become: yes
+
+- name: create influxDB data dir
+  file:
+    path: /opt/heatingControlDatalake/influxDb/init
+    state: directory
+    owner: pi
+    group: root
+    mode: 0775
+  become: yes
+
+- name: Copy docker-compose file
+  copy:
+    src: "templates/docker-compose.yml"
+    dest: "/opt/heatingControlDatalake/docker-compose.yml"
+
+- name: Copy influx db init file
+  copy:
+    src: "templates/hc3.iql"
+    dest: "/opt/heatingControlDatalake/influxDb/init/hc3.iql"
+
+- name: Copy influxdb.conf file
+  copy:
+    src: "templates/influxdb.conf"
+    dest: "/opt/heatingControlDatalake/influxDb/influxdb.conf"
+
+- name: Copy telegraf.conf file
+  copy:
+    src: "templates/telegraf.conf"
+    dest: "/opt/heatingControlDatalake/influxDb/telegraf.conf"
+
+- name: Pull docker images
+  shell: "docker-compose -f /opt/heatingControlDatalake/docker-compose.yml pull"
+  become: yes
+
+- name: Create containers
+  shell: "docker-compose -f /opt/heatingControlDatalake/docker-compose.yml up -d"
+  become: yes
+
