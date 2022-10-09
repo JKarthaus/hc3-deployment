@@ -52,6 +52,8 @@
     src: "templates/telegraf.conf"
     dest: "/opt/heatingControlDatalake/influxDb/telegraf.conf"
 
+# TODO: implement Chronograf default Dashboard from template folder
+
 - name: Pull docker images
   shell: "docker-compose -f /opt/heatingControlDatalake/docker-compose.yml pull"
   become: yes
