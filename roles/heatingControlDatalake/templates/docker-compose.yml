@@ -1,7 +1,7 @@
-version: '2'
+version: '3'
 
 services:
-#-----------------------------------------------------------------------------------
+   #-----------------------------------------------------------------------------------
    hc3-influxdb:
       image: arm32v7/influxdb:latest
       restart: always
@@ -23,14 +23,16 @@ services:
          - /opt/heatingControlDatalake/influxDb/data:/var/lib/influxdb
          - /opt/heatingControlDatalake/influxDb/init:/docker-entrypoint-initdb.d
          - /opt/heatingControlDatalake/influxDb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
-#-----------------------------------------------------------------------------------
+      network_mode: "host"
+   #-----------------------------------------------------------------------------------
    hc3-telegraf:
       image: arm32v7/telegraf:latest
       restart: always
       container_name: hc3-telegraf
       volumes:
          - /opt/heatingControlDatalake/influxDb/telegraf.conf:/etc/telegraf/telegraf.conf:ro
-#-----------------------------------------------------------------------------------
+      network_mode: "host"
+   #-----------------------------------------------------------------------------------
    hc3-chronograf:
       image: arm32v7/chronograf:latest
       container_name: hc3-chronograf
@@ -43,3 +45,4 @@ services:
          - INFLUXDB_URL=http://hc3-werkstatt:8086
          - INFLUXDB_USERNAME=hc3
          - INFLUXDB_PASSWORD=hc3
+      network_mode: "host"

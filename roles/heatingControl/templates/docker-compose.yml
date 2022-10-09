@@ -1,26 +1,27 @@
 version: '3'
 services:
-#-----------------------------------------------------------------------------------
+   #-----------------------------------------------------------------------------------
    hc3-aqmp:
       image: ronnyroos/rpi-rabbitmq
       container_name: hc3-aqmp
       restart: always
       hostname: hc3-aqmp
       ports:
-      - 5672:5672
-      - 15672:15672
+         - 5672:5672
+         - 15672:15672
       logging:
          driver: "json-file"
          options:
             max-size: "1024m"
-#-----------------------------------------------------------------------------------
+      network_mode: "host"
+   #-----------------------------------------------------------------------------------
    hc3-sensor:
       image: jkarthaus/hc3-sensor:latest
       container_name: hc3-sensor
       restart: always
       hostname: hc3-sensor
       environment:
-         - RABBIT_MQ_HOST=hc3-aqmp
+         - RABBIT_MQ_HOST=hc3-werkstatt
          - RABBIT_MQ_EXCHANGE=hc-ds18b20
       privileged: true
       depends_on:
@@ -29,14 +30,15 @@ services:
          driver: "json-file"
          options:
             max-size: "1024m"
-#-----------------------------------------------------------------------------------
+      network_mode: "host"
+   #-----------------------------------------------------------------------------------
    hc3-actor:
       image: jkarthaus/hc3-actor:latest
       container_name: hc3-actor
       restart: always
       hostname: hc3-actor
       environment:
-         - RABBIT_MQ_HOST=hc3-aqmp
+         - RABBIT_MQ_HOST=hc3-werkstatt
          - RABBIT_MQ_QUEUE=hc-gpio-actor
          - DEMO_MODE=False
       privileged: true
@@ -46,14 +48,15 @@ services:
          driver: "json-file"
          options:
             max-size: "1024m"
-#-----------------------------------------------------------------------------------
+      network_mode: "host"
+   #-----------------------------------------------------------------------------------
    hc3-display:
       image: jkarthaus/hc3-display:latest
       container_name: hc3-display
       restart: always
       hostname: hc3-display
       environment:
-         - RABBIT_MQ_HOST=hc3-aqmp
+         - RABBIT_MQ_HOST=hc3-werkstatt
          - RABBIT_MQ_QUEUE=hc-lcd-display
          - DEMO_MODE=False
          - WELCOME_TEXT=Heating Control III...
@@ -65,7 +68,8 @@ services:
          driver: "json-file"
          options:
             max-size: "1024m"
-#-----------------------------------------------------------------------------------
+      network_mode: "host"
+   #-----------------------------------------------------------------------------------
    hc3-core:
       image: jkarthaus/hc3-core:latest
       container_name: hc3-core
@@ -77,9 +81,8 @@ services:
          - HC3_SENSOR_COMBUSTION=28-0214630d20ff
          - HC3_SENSOR_GARAGE=28-03146209ceff
          - HC3_SENSOR_BUFFER=28-0214631220ff
-         - RABBITMQ_HOST=hc3-aqmp
+         - RABBITMQ_HOST=hc3-werkstatt
          - RABBITMQ_PORT=5672
-         - HC3_PUMP_GARAGE_MIN_TEMP=9
       #HEATING-CONTROL_SENSOR_LEADING-LINE=
       #HEATING-CONTROL_SENSOR_RETURN-LINE=
       depends_on:
@@ -90,4 +93,4 @@ services:
          driver: "json-file"
          options:
             max-size: "1024m"
-
+      network_mode: "host"
