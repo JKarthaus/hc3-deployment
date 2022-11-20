@@ -83,6 +83,7 @@ services:
          - HC3_SENSOR_BUFFER=28-0214631220ff
          - RABBITMQ_HOST=hc3-werkstatt
          - RABBITMQ_PORT=5672
+         - MICRONAUT_ROUTER_STATIC-RESSOURCES_DEFAULT_PATHS=file:/webGui
       #HEATING-CONTROL_SENSOR_LEADING-LINE=
       #HEATING-CONTROL_SENSOR_RETURN-LINE=
       depends_on:
@@ -94,3 +95,5 @@ services:
          options:
             max-size: "1024m"
       network_mode: "host"
+      volumes:
+         - /opt/heatingControl/webGui:/webGui

@@ -1,0 +1,15 @@
+---
+
+- name: create Heating Control GUI Directory
+  file:
+    path: /opt/heatingControl/webGui
+    state: directory
+    owner: pi
+    group: root
+    mode: 0775
+  become: yes
+
+- name: Copy Angular GUI
+  copy:
+    src: /home/jkarthaus/git/hc3-gui/dist/hc3-gui/
+    dest: /opt/heatingControl/webGui
