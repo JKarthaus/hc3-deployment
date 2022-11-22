@@ -32,6 +32,15 @@
     mode: 0775
   become: yes
 
+- name: create chronograph dashboard dir
+  file:
+    path: /opt/heatingControlDatalake/dashboards
+    state: directory
+    owner: pi
+    group: root
+    mode: 0775
+  become: yes
+
 - name: Copy docker-compose file
   copy:
     src: "templates/docker-compose.yml"
@@ -52,7 +61,10 @@
     src: "templates/telegraf.conf"
     dest: "/opt/heatingControlDatalake/influxDb/telegraf.conf"
 
-# TODO: implement Chronograf default Dashboard from template folder
+- name: copy default dashboard
+  copy:
+    src: "templates/defaultDashboard.dashboard"
+    dest: "/opt/heatingControlDatalake/dashboards/defaultDashboard.dashboard"
 
 - name: Pull docker images
   shell: "docker-compose -f /opt/heatingControlDatalake/docker-compose.yml pull"
