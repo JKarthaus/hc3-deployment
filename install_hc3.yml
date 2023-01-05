@@ -10,5 +10,5 @@
  #   - remoteShutdown
  #   - greeting
  #   - docker
- #   - heatingControl
-    - heatingControlWebGui
+    - heatingControl
+ #   - heatingControlWebGui

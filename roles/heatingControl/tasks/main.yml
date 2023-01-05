@@ -26,6 +26,15 @@
     mode: 0775
   become: yes
 
+- name: create hc3-proxy config dir
+  file:
+    path: /opt/heatingControl/proxyConf
+    state: directory
+    owner: pi
+    group: root
+    mode: 0775
+  become: yes
+
 - name: Copy Rabbit MQ config
   copy:
     src: templates/rabbit_aqmp_config.json
@@ -36,6 +45,12 @@
     src: templates/rabbitmqadmin
     dest: /opt/heatingControl/rabbitmqadmin
     mode: u=rwx,g=r,o=r
+
+- name: Copy hc3-proxy config
+  copy:
+    src: templates/Caddyfile
+    dest: /opt/heatingControl/proxyConf
+    mode: u=rw,g=r,o=r
 
 - name: Copy docker-compose file
   copy:

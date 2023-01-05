@@ -1,0 +1,11 @@
+#!
+# To use your own domain name (with automatic HTTPS), first make
+# sure your domain's A/AAAA DNS records are properly pointed to
+# this machine's public IP, then replace ":80" below with your
+# domain name.
+
+:80 {
+        # Another common task is to set up a reverse proxy:
+        reverse_proxy /data/* localhost:8888
+        reverse_proxy localhost:8080
+}
