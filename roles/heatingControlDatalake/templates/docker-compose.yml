@@ -34,11 +34,9 @@ services:
     network_mode: "host"
   #-----------------------------------------------------------------------------------
   hc3-chronograf:
-    image: arm32v7/chronograf:latest
+    image: arm32v7/chronograf:1.9
     container_name: hc3-chronograf
     restart: always
-    ports:
-      - "8888:8888"
     depends_on:
       - hc3-influxdb
     environment:
@@ -46,6 +44,8 @@ services:
       - INFLUXDB_USERNAME=hc3
       - INFLUXDB_PASSWORD=hc3
       - RESOURCES_PATH=/data
+      - BASE_PATH=/data
+      - LOG_LEVEL=info
     network_mode: "host"
     volumes:
       - /opt/heatingControlDatalake/dashboards:/data
