@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"chronografVersion": "1.10.0",
+		"chronografVersion": "1.9.4",
 		"sources": {
 			"0": {
 				"name": "http://hc3-werkstatt:8086",
@@ -12,7 +12,7 @@
 		"id": "1",
 		"cells": [
 			{
-				"i": "bacbf664-a228-4221-988c-a9a788cddd34",
+				"i": "d4bc9c7d-08c9-48e2-941b-4190592debb3",
 				"x": 0,
 				"y": 0,
 				"w": 12,
@@ -92,7 +92,7 @@
 							"range": null,
 							"shifts": null
 						},
-						"source": "",
+						"source": "/chronograf/v1/sources/0",
 						"type": "influxql"
 					}
 				],
@@ -181,7 +181,7 @@
 				"note": "",
 				"noteVisibility": "default",
 				"links": {
-					"self": "/chronograf/v1/dashboards/1/cells/bacbf664-a228-4221-988c-a9a788cddd34"
+					"self": "/chronograf/v1/dashboards/1/cells/d4bc9c7d-08c9-48e2-941b-4190592debb3"
 				}
 			}
 		],
