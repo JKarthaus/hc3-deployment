@@ -53,8 +53,8 @@
     mode: u=rw,g=r,o=r
 
 - name: Copy docker-compose file
-  copy:
-    src: "templates/docker-compose.yml"
+  template:
+    src: "templates/docker-compose.yml.y2"
     dest: "/opt/heatingControl/docker-compose.yml"
 
 - name: Pull docker images

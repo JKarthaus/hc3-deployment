@@ -2,8 +2,7 @@
 
 echo "-------------------------------------------------------"
 echo "INSTALLING HeatingControl 3 via Ansible on Raspberry Pi"
-echo "
--------------------------------------------------------"
+echo "-------------------------------------------------------"
 
 
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' ansible|grep "install ok installed")
@@ -29,4 +28,4 @@ fi
 
 cowsay "Starting Ansible Playbook"
 
-ansible-playbook $1 install_hc3.yml -i hosts
+ansible-playbook $1 install_hc3.yml -i inv_hc3_main_heating

@@ -1,0 +1,4 @@
+hc3:
+  hosts:
+    hc3-zentralheizung:
+      hc3_core_image: "jkarthaus/hc3-main-heating:latest"
