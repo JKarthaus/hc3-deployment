@@ -1,4 +1,4 @@
-hc3:
+all: # keys must be unique, i.e. only one 'hosts' per group
   hosts:
-    hc3-zentralheizung:
+    hc3-zentral:
       hc3_core_image: "jkarthaus/hc3-main-heating:latest"

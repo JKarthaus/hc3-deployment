@@ -3,12 +3,12 @@
 
 - name: Install all componentes of HeatingControl 3
   hosts: all
-  remote_user: pi
+  remote_user: hc3
 
   roles:
- #   - kernelConfig
+#OK    - kernelConfig
  #   - remoteShutdown
- #   - greeting
+#OK    - greeting
  #   - docker
  #  - heatingControl
-    - heatingControlWebGui
+    #- heatingControlWebGui

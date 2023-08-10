@@ -64,6 +64,6 @@
 
 - name: Install Python Tools for I2c
   apt:
-    name: python-smbus
+    name: python3-smbus
     state: present
   become: yes

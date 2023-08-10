@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 echo "-------------------------------------------------------"
 echo "INSTALLING HeatingControl 3 via Ansible on Raspberry Pi"
 echo "-------------------------------------------------------"

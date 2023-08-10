@@ -1,10 +1,9 @@
-
 ---
 
 # This playbook installs a great Greeting Script that 
 # executes at ssh login
 
-- name: Copy Script to pi user
+- name: Copy Script to hc3 user
   template:
     src: "templates/welcome.sh"
     dest: "~"
@@ -12,7 +11,7 @@
 
 - lineinfile:
     dest: /etc/profile
-    regexp: '^/home/pi/welcome.sh'
-    line: '/home/pi/welcome.sh'
+    regexp: '^/home/hc3/welcome.sh'
+    line: '/home/hc3/welcome.sh'
   become: true
 
