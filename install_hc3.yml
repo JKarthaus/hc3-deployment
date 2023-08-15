@@ -7,8 +7,8 @@
 
   roles:
 #OK    - kernelConfig
- #   - remoteShutdown
+#ok  - remoteShutdown
 #OK    - greeting
- #   - docker
- #  - heatingControl
+#ok    - docker
+  - heatingControl
     #- heatingControlWebGui

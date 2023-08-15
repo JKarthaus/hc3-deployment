@@ -73,7 +73,7 @@ services:
 {% endif %}
   #-----------------------------------------------------------------------------------
   hc3-core:
-    image: jkarthaus/{{ hc3_core_image }}
+    image: {{ hc3_core_image }}
     container_name: hc3-core
     restart: always
     hostname: hc3-core

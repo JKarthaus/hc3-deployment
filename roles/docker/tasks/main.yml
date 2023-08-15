@@ -6,7 +6,7 @@
 - name: Install a list of packages
   apt:
     pkg:
-    - python-pip
+    - python3-pip
     - apt-transport-https
     - ca-certificates
     - software-properties-common
@@ -27,9 +27,9 @@
   become: true
   when : dockerLink.stat.islnk is not defined
 
-- name: adding pi to group docker
+- name: adding hc3 to group docker
   user:
-    name: 'pi'
+    name: 'hc3'
     groups: docker
     append: yes
   become: true

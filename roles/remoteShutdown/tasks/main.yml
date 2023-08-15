@@ -1,11 +1,14 @@
 
 ---
-# This playbook gives the user pi the rigths to shutdown the system
+# This playbook gives the user hc3 the rigths to shutdown the system
 
 - lineinfile:
-    dest: /etc/sudoers
-    regexp: '^pi'
-    line: 'pi ALL=(ALL) NOPASSWD: /sbin/poweroff'
-  become: yes
+    dest: ~/.bashrc
+    regexp: '^alias shutdown'
+    line: "alias shutdown='sudo /sbin/shutdown'"
+- lineinfile:
+    dest: ~/.bashrc
+    regexp: '^alias reboot'
+    line: "alias reboot='sudo /sbin/reboot'"
 
 

@@ -21,7 +21,7 @@
   file:
     path: /opt/heatingControl
     state: directory
-    owner: pi
+    owner: hc3
     group: root
     mode: 0775
   become: yes
@@ -30,7 +30,7 @@
   file:
     path: /opt/heatingControl/proxyConf
     state: directory
-    owner: pi
+    owner: hc3
     group: root
     mode: 0775
   become: yes
