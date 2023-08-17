@@ -1,6 +1,7 @@
 hc3:
   hosts:
     hc3-werkstatt:
+
       # set env variables for hc3-core
       hc3_core_image: "jkarthaus/hc3-core:latest"
       HC3_SENSOR_COMBUSTION: "28-0214630d20ff"
@@ -8,4 +9,8 @@ hc3:
       HC3_SENSOR_BUFFER: "28-0214631220ff"
       # deploy lcd display microservice
       hc3_display: true
+      # Datalake images
+      hc3_influxdb_image: "arm32v7/influxdb:latest"
+      hc3_telegraf_image: "arm32v7/telegraf:latest"
+      hc3_chronograf_image: "arm32v7/chronograf:1.9"
 

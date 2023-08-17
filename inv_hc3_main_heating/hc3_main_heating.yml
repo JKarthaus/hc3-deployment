@@ -2,3 +2,7 @@ all: # keys must be unique, i.e. only one 'hosts' per group
   hosts:
     hc3-zentral:
       hc3_core_image: "jkarthaus/hc3-main-heating:latest"
+      # Datalake images
+      hc3_influxdb_image: "arm64v8/influxdb:1.8.10"
+      hc3_telegraf_image: "arm64v8/telegraf:1.27.3"
+      hc3_chronograf_image: "arm64v8/chronograf:1.9.4"

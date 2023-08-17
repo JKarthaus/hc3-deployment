@@ -9,7 +9,7 @@
   file:
     path: /opt/heatingControlDatalake
     state: directory
-    owner: pi
+    owner: hc3
     group: root
     mode: 0775
   become: yes
@@ -18,7 +18,7 @@
   file:
     path: /opt/heatingControlDatalake/influxDb/data
     state: directory
-    owner: pi
+    owner: hc3
     group: root
     mode: 0775
   become: yes
@@ -27,7 +27,7 @@
   file:
     path: /opt/heatingControlDatalake/influxDb/init
     state: directory
-    owner: pi
+    owner: hc3
     group: root
     mode: 0775
   become: yes
@@ -36,14 +36,14 @@
   file:
     path: /opt/heatingControlDatalake/dashboards
     state: directory
-    owner: pi
+    owner: hc3
     group: root
     mode: 0775
   become: yes
 
-- name: Copy docker-compose file
-  copy:
-    src: "templates/docker-compose.yml"
+- name: create docker-compose file
+  template:
+    src: "templates/docker-compose.yml.y2"
     dest: "/opt/heatingControlDatalake/docker-compose.yml"
 
 - name: Copy influx db init file

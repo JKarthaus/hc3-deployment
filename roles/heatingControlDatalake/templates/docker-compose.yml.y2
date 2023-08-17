@@ -3,7 +3,7 @@ version: '3'
 services:
   #-----------------------------------------------------------------------------------
   hc3-influxdb:
-    image: arm32v7/influxdb:latest
+    image: {{ hc3_influxdb_image }}
     restart: always
     container_name: hc3-influxdb
     hostname: hc3-influxdb
@@ -26,7 +26,7 @@ services:
     network_mode: "host"
   #-----------------------------------------------------------------------------------
   hc3-telegraf:
-    image: arm32v7/telegraf:latest
+    image: {{ hc3_telegraf_image }}
     restart: always
     container_name: hc3-telegraf
     volumes:
@@ -34,7 +34,7 @@ services:
     network_mode: "host"
   #-----------------------------------------------------------------------------------
   hc3-chronograf:
-    image: arm32v7/chronograf:1.9
+    image: {{ hc3_chronograf_image }}
     container_name: hc3-chronograf
     restart: always
     depends_on:

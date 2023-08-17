@@ -3,7 +3,7 @@
 
 - name: Install hc3 Datalake tool to docker-compose
   hosts: all
-  remote_user: pi
+  remote_user: hc3
 
   roles:
   # - docker

@@ -1,12 +1,11 @@
 #!/bin/bash
-
+clear
 echo "-----------------------------------------------------------"
 echo "INSTALLING Heating Control Datalake Tools                  "
 echo "influxdb, telegraf, chronograf via Ansible on Raspberry Pi "
 echo "-----------------------------------------------------------"
 
-
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' ansible|grep "install ok installed")
+PKG_OK=$(dpkg-query -W --showformat='${Status}\n' ansible | grep "install ok installed")
 echo Checking for ansible: $PKG_OK
 
 if [ "" == "$PKG_OK" ]; then
@@ -14,7 +13,7 @@ if [ "" == "$PKG_OK" ]; then
   sudo apt-get --force-yes --yes install ansible
 fi
 
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' cowsay|grep "install ok installed")
+PKG_OK=$(dpkg-query -W --showformat='${Status}\n' cowsay | grep "install ok installed")
 echo Checking for cowsay: $PKG_OK
 
 if [ "" == "$PKG_OK" ]; then
@@ -29,4 +28,4 @@ fi
 
 cowsay "Starting Ansible Playbook"
 
-ansible-playbook $1 install_hc3Datalake.yml -i hosts
+ansible-playbook $1 install_hc3Datalake.yml -i inv_hc3_main_heating
