@@ -1,1 +1,144 @@
-{"rabbit_version":"3.3.5","users":[{"name":"guest","password_hash":"pqnb54/2q2vUV+lfXGRT4WSDRKs=","tags":"administrator"}],"vhosts":[{"name":"/"}],"permissions":[{"user":"guest","vhost":"/","configure":".*","write":".*","read":".*"}],"parameters":[],"policies":[],"queues":[{"name":"hc-gpio-actor","vhost":"/","durable":true,"auto_delete":false,"arguments":{"x-message-ttl":5000}},{"name":"hc-relais-hat","vhost":"/","durable":true,"auto_delete":false,"arguments":{"x-message-ttl":10000}},{"name":"hc-temperature","vhost":"/","durable":true,"auto_delete":false,"arguments":{"x-message-ttl":15000}},{"name":"testQueue","vhost":"/","durable":true,"auto_delete":false,"arguments":{"x-message-ttl":10000}},{"name":"hc-lcd-display","vhost":"/","durable":true,"auto_delete":false,"arguments":{"x-message-ttl":10000}}],"exchanges":[{"name":"hc-relais-hat","vhost":"/","type":"topic","durable":true,"auto_delete":false,"internal":false,"arguments":{}},{"name":"hc-lcd-display","vhost":"/","type":"topic","durable":true,"auto_delete":false,"internal":false,"arguments":{}},{"name":"hc-ds18b20","vhost":"/","type":"topic","durable":true,"auto_delete":false,"internal":false,"arguments":{}}],"bindings":[{"source":"hc-ds18b20","vhost":"/","destination":"hc-temperature","destination_type":"queue","routing_key":"*","arguments":{}},{"source":"hc-ds18b20","vhost":"/","destination":"testQueue","destination_type":"queue","routing_key":"*","arguments":{}},{"source":"hc-lcd-display","vhost":"/","destination":"hc-lcd-display","destination_type":"queue","routing_key":"*","arguments":{}},{"source":"hc-relais-hat","vhost":"/","destination":"hc-gpio-actor","destination_type":"queue","routing_key":"*","arguments":{}},{"source":"hc-relais-hat","vhost":"/","destination":"hc-relais-hat","destination_type":"queue","routing_key":"*","arguments":{}}]}
+{
+  "rabbit_version": "3.3.5",
+  "users": [
+    {
+      "name": "guest",
+      "password_hash": "pqnb54/2q2vUV+lfXGRT4WSDRKs=",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "guest",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "parameters": [],
+  "policies": [],
+  "queues": [
+    {
+      "name": "hc-gpio-actor",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-message-ttl": 5000
+      }
+    },
+    {
+      "name": "hc-relais-hat",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-message-ttl": 10000
+      }
+    },
+    {
+      "name": "hc-temperature",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-message-ttl": 15000
+      }
+    },
+    {
+      "name": "testQueue",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-message-ttl": 10000
+      }
+    },
+    {
+      "name": "hc-lcd-display",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-message-ttl": 10000
+      }
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "hc-relais-hat",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "hc-lcd-display",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "hc-ds18b20",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "hc-ds18b20",
+      "vhost": "/",
+      "destination": "hc-temperature",
+      "destination_type": "queue",
+      "routing_key": "*",
+      "arguments": {}
+    },
+    {
+      "source": "hc-ds18b20",
+      "vhost": "/",
+      "destination": "testQueue",
+      "destination_type": "queue",
+      "routing_key": "*",
+      "arguments": {}
+    },
+    {
+      "source": "hc-lcd-display",
+      "vhost": "/",
+      "destination": "hc-lcd-display",
+      "destination_type": "queue",
+      "routing_key": "*",
+      "arguments": {}
+    },
+    {
+      "source": "hc-relais-hat",
+      "vhost": "/",
+      "destination": "hc-gpio-actor",
+      "destination_type": "queue",
+      "routing_key": "*",
+      "arguments": {}
+    },
+    {
+      "source": "hc-relais-hat",
+      "vhost": "/",
+      "destination": "hc-relais-hat",
+      "destination_type": "queue",
+      "routing_key": "*",
+      "arguments": {}
+    }
+  ]
+}

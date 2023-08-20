@@ -40,12 +40,6 @@
     src: templates/rabbit_aqmp_config.json
     dest: /opt/heatingControl/rabbit_aqmp_config.json
 
-- name: Copy Rabbit MQ Admin
-  copy:
-    src: templates/rabbitmqadmin
-    dest: /opt/heatingControl/rabbitmqadmin
-    mode: u=rwx,g=r,o=r
-
 - name: Copy hc3-proxy config
   copy:
     src: templates/Caddyfile
@@ -70,12 +64,13 @@
     port: 15672
     delay: 30
 
-- name: configure rabbitmq via admin
-  shell:
-    cmd: "./rabbitmqadmin -q import rabbit_aqmp_config.json"
-    chdir: "/opt/heatingControl/"
+- name: copy hc3 config to hc3-aqmp container
+  shell: "docker cp /opt/heatingControl/rabbit_aqmp_config.json hc3-aqmp:/tmp"
 
-- name: Create containers
+- name: import config with rabbitmqadmin
+  shell: "docker exec hc3-aqmp rabbitmqadmin import /tmp/rabbit_aqmp_config.json"
+
+- name: Create all not yet created containers
   shell: "docker-compose -f /opt/heatingControl/docker-compose.yml up -d"
   become: yes
 

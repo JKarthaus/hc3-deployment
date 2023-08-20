@@ -2,7 +2,7 @@ version: '3'
 services:
   #-----------------------------------------------------------------------------------
   hc3-aqmp:
-    image: ronnyroos/rpi-rabbitmq
+    image: {{ hc3_aqmp_image }}
     container_name: hc3-aqmp
     restart: always
     hostname: hc3-aqmp
