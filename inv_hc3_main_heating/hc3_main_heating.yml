@@ -7,3 +7,9 @@ all: # keys must be unique, i.e. only one 'hosts' per group
       hc3_influxdb_image: "arm64v8/influxdb:1.8.10"
       hc3_telegraf_image: "arm64v8/telegraf:1.27.3"
       hc3_chronograf_image: "arm64v8/chronograf:1.9.4"
+      # hc3 Main Variables
+      hc3_sensor_inlet_grey_water_sensor_id: "28-0214631f29ff"
+      hc3_sensor_grey_water_sensor_id: "28-0214631080ff"
+      hc3_sensor_outlet_solar_sensor_id: "28-0214635c11ff"
+      hc3_sensor_inlet_heating_sensor_id: "28-0214633b64ff"
+      hc3_sensor_outdoor_id: "UNKNOWN"

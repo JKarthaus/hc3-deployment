@@ -80,14 +80,29 @@ services:
     environment:
       - HC3_RELAIS-EXCHANGE_NAME=hc-relais-hat
       - HC3_TEMPERATURE-QUEUE_NAME=hc-temperature
-{% if HC3_SENSOR_COMBUSTION is defined %}
-      - HC3_SENSOR_COMBUSTION={{ HC3_SENSOR_COMBUSTION }}
+{% if hc3_sensor_combustion is defined %}
+      - HC3_SENSOR_COMBUSTION={{ hc3_sensor_combustion }}
 {% endif %}
-{% if HC3_SENSOR_GARAGE is defined %}
-      - HC3_SENSOR_GARAGE={{ HC3_SENSOR_GARAGE }}
+{% if hc3_sensor_garage is defined %}
+      - HC3_SENSOR_GARAGE={{ hc3_sensor_garage }}
 {% endif %}
-{% if HC3_SENSOR_BUFFER is defined %}
-      - HC3_SENSOR_BUFFER={{ HC3_SENSOR_BUFFER }}
+{% if hc3_sensor_buffer is defined %}
+      - HC3_SENSOR_BUFFER={{ hc3_sensor_buffer }}
+{% endif %}
+{% if hc3_sensor_inlet_grey_water_sensor_id is defined %}
+      - HC3_SENSOR_INLET_GREY_WATER_SENSOR_ID={{ hc3_sensor_inlet_grey_water_sensor_id }}
+{% endif %}
+{% if hc3_sensor_grey_water_sensor_id is defined %}
+      - HC3_SENSOR_GREY_WATER_SENSOR_ID={{ hc3_sensor_grey_water_sensor_id }}
+{% endif %}
+{% if hc3_sensor_outlet_solar_sensor_id is defined %}
+      - HC3_SENSOR_OUTLET_SOLAR_SENSOR_ID={{ hc3_sensor_outlet_solar_sensor_id }}
+{% endif %}
+{% if hc3_sensor_inlet_heating_sensor_id is defined %}
+      - HC3_SENSOR_INLET_HEATING_SENSOR_ID={{ hc3_sensor_inlet_heating_sensor_id }}
+{% endif %}
+{% if hc3_sensor_outdoor_id is defined %}
+      - HC3_SENSOR_OUTDOOR_ID={{ hc3_sensor_outdoor_id }}
 {% endif %}
       - RABBITMQ_HOST={{ inventory_hostname }}
       - RABBITMQ_PORT=5672
